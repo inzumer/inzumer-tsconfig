@@ -1,9 +1,25 @@
 {
   "name": "@inzumer/tsconfig",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Shared TypeScript configurations for the Inzumer design system",
+  "version": "1.0.0",
+  "description": "Shared TypeScript configurations for Inzumer projects",
   "license": "MIT",
+  "author": "Nahuel Zamuner <inzumer@gmail.com>",
+  "homepage": "https://github.com/inzumer/inzumer-tsconfig#readme",
+  "bugs": {
+    "url": "https://github.com/inzumer/inzumer-tsconfig/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inzumer/inzumer-tsconfig.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20"
+  },
   "exports": {
     "./base": "./base.json",
     "./react-library": "./react-library.json",
@@ -12,6 +28,18 @@
   "files": [
     "base.json",
     "react-library.json",
-    "node.json"
-  ]
+    "node.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node -e \"for (const f of ['base.json','react-library.json','node.json']) JSON.parse(require('fs').readFileSync(f,'utf8'))\" && prettier --check .",
+    "format": "prettier --write .",
+    "changeset": "changeset",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "prettier": "^3.9.9"
+  }
 }
